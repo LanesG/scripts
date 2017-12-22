@@ -22,7 +22,36 @@ path=/home/billr/mem/long.file.name
 |`${path%.*.*}`|(from end) `/home/billr/mem/long`|
 |`${path%/*}`|`/home/billr/mem`|
 
-## Variable defaults
+## Variable default
 ```bash
 VAR=${1:-'Default'}
+```
+
+## Output parts
+```bash
+var=Fiesen
+echo ${var:2:4}
+esen
+```
+
+## Replace parts
+```bash
+var=Fiesen
+echo ${var/i/li}
+Fliesen
+
+echo ${var/i}
+Fesen
+```
+
+# Read data
+## STDIN
+### ksh
+```ksh
+read var?“Input: “
+```
+
+### bash
+```bash
+read -p “Eingabe: “ var
 ```
