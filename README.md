@@ -195,6 +195,81 @@ echo 10-3 | bc
 7
 ```
 
+# Random numbers
+```
+echo $((RANDOM%10+1))
+```
+
+# Arrays
+[Bash arrays](http://www.artificialworlds.net/blog/2013/09/18/bash-arrays/)
+
+Note that the `@` sign can be used instead of the `*` in constructs such as `${arr[*]}`, the result is the same except when expanding to the items of the array within a quoted string. In this case the behavior is the same as when expanding `$*` and `$@` within quoted strings:
+
+`"${arr[*]}"` returns all the items as a **single** word, whereas  
+`"${arr[@]}"` returns each item as a **separate** word.
+
+The following example shows how unquoted, quoted `*`, and quoted `@` affect the expansion (particularly important when the array items themselves contain spaces):
+
+```bash
+array=("first item" "second item" "third" "item")
+
+echo "Number of items in original array: ${#array[*]}"
+for ix in ${!array[*]}
+do
+    printf "   %s\n" "${array[$ix]}"
+done
+echo
+
+arr=(${array[*]})
+echo "After unquoted expansion: ${#arr[*]}"
+for ix in ${!arr[*]}
+do
+    printf "   %s\n" "${arr[$ix]}"
+done
+echo
+
+arr=("${array[*]}")
+echo "After * quoted expansion: ${#arr[*]}"
+for ix in ${!arr[*]}
+do
+    printf "   %s\n" "${arr[$ix]}"
+done
+echo
+
+arr=("${array[@]}")
+echo "After @ quoted expansion: ${#arr[*]}"
+for ix in ${!arr[*]}
+do
+    printf "   %s\n" "${arr[$ix]}"
+done
+```
+
+When run it outputs:
+```
+Number of items in original array: 4
+   first item
+   second item
+   third
+   item
+
+After unquoted expansion: 6
+   first
+   item
+   second
+   item
+   third
+   item
+
+After * quoted expansion: 1
+   first item second item third item
+
+After @ quoted expansion: 4
+   first item
+   second item
+   third
+   item
+```
+
 # Read data
 ## STDIN
 ### ksh
