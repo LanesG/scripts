@@ -68,6 +68,133 @@ if $(grep -q ^xn[0e][0-9] <<< $user); then
 diff <(ls /bin) <(ls /usr/bin)
 ```
 
+# Parameters
+Number of parameters: `$#`
+
+```bash
+#!/bin/sh
+
+usage () {
+   echo "Usage: $0 [-i|-m] <filename>"
+   echo "   -i IOPS only"
+   echo "   -m MB/s only"
+   exit 1
+}
+
+if [[ $# == 0 ]]
+then
+   usage
+fi
+
+while getopts ":im" opt
+do
+   case $opt in
+      i)        echo "IOPS";;
+      m)        echo "MB/s";;
+      \?)       usage;;
+   esac
+done
+```
+
+```bash
+case `uname -s` in
+    Linux)
+        opt=`getopt -o cd --long create-indexes,drop-indexes -- "$@"`
+        ;;
+
+    AIX|SunOS)
+        opt=`getopt cd $*`
+        ;;
+esac
+
+# On getopt error terminate.
+if [[ $? != 0 ]] ; then
+    print_usage
+    exit 1
+fi
+
+# Evaluate current option values.
+eval set -- "$opt"
+
+while true; do
+    case "$1" in ...
+```
+
+# Suppress output
+[Illustrated Redirection Tutorial](http://wiki.bash-hackers.org/howto/redirection_tutorial)
+## STDOUT and STDERR
+```
+ping 127.0.0.1 > /dev/null 2>&1
+```
+
+## STDERR
+```
+ping 127.0.0.1 2> /dev/null
+```
+
+# Calculations
+## Variables and numbers
+```
+var1=$((var2-4))
+```
+
+```
+var1=`echo $var2-4 | bc`
+```
+
+## Only variables
+```
+var1=$((var2-var3))
+```
+
+```
+integer var1=${var2}-${var3}
+```
+
+```
+let $((var1 = $var2 + $var3))
+```
+
+## Increment variable
+```
+((var += 1))
+```
+
+```
+let $((var += 1))
+```
+
+```
+var=`expr $var + 1`
+```
+
+## Substraction in if
+```bash
+if [[ $(( (($VAR1)–4) -lt 4) )) ]]
+then
+    ...
+fi
+```
+
+## hex2dec
+```bash
+echo $((16#FF))
+255
+```
+
+## Modulus
+```bash
+$(($var % 5))
+```
+
+## Echo
+```bash
+echo 10-3
+10-3
+echo 10-3 | bc
+7
+```
+
 # Read data
 ## STDIN
 ### ksh
@@ -95,7 +222,7 @@ echo $x
 
 ```bash
 while read x; do
-   echo $x
+    echo $x
 done < data.txt
 ```
 
@@ -104,5 +231,4 @@ done < data.txt
 | --- | --- | --- | --- |
 |atime|Access|`-ult`|The time when the data of a file was last accessed. Displaying the contents of a file or executing a shell script will update a file's atime.|
 |mtime|Modify|`lt`|The time when the actual contents of a file was last modified.|
-|ctime|Change|`-clt`|The time when changes were made to the file or directory's inode (owner, permissions, etc.). The ctime is also updated when the contents of a file change.
-In UNIX, it is not possible to tell the actual creation time of a file.|
+|ctime|Change|`-clt`|The time when changes were made to the file or directory's inode (owner, permissions, etc.). The ctime is also updated when the contents of a file change. In UNIX, it is not possible to tell the actual creation time of a file.|
