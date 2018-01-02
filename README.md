@@ -270,6 +270,19 @@ After @ quoted expansion: 4
    item
 ```
 
+# Hashes
+[Bash associative arrays](http://www.artificialworlds.net/blog/2012/10/17/bash-associative-array-examples/)
+
+```bash
+typeset -A age
+age["bob"]=42
+age["alice"]=31
+print ${age[bob]}
+
+name=bob
+print ${age[$name]}
+```
+
 # Read data
 ## STDIN
 ### ksh
