@@ -44,7 +44,7 @@ echo ${var/i}
 Fesen
 ```
 
-# Here document
+# Here Documents
 ```bash
 cat > /tmp/file.txt << EOF
 text
@@ -52,7 +52,7 @@ $var
 EOF
 ```
 
-# Here string
+# Here Strings
 ```bash
 var=foo
 cut -c1 <<< $var
@@ -300,12 +300,89 @@ fi
 ```
 
 ## Operators
+Complete list in `man bash` under `CONDITIONAL EXPRESSIONS`.
+
 |**Operator**|**true if**|
 | --- | --- |
 |`-e file`|`file` exists, beware of [wildcards](https://stackoverflow.com/questions/6363441/check-if-a-file-exists-with-wildcard-in-shell-script)|
+|`-a file`|like `-e` but deprecated|
+|`-d file`|`file` is a directory|
+|`-f file`|`file` is a regular file|
+|`-L file`|`file` is a symbolic link|
+|`file1 –nt file2`|`file1` is newer than `file2`, or if `file1` exists and `file2` does not|
+|`-z $var`|`$var` is `NULL`|
+|`-n $var`|`$var` is not `NULL`|
 
+## String comparison
+```bash
+if [[ $VAR = "String" ]]
+```
 
+If you want to know if a variable ends with `ing`:
+```bash
+if [[ $VAR == *ing ]]
+```
 
+## Two conditions
+```bash
+if [[ $VAR -gt 0 && $VAR –lt 7 ]]
+```
+
+## Regular expressions
+```bash
+re="http://([^/]+)/"
+if [[ $name =~ $re ]]; then echo ${BASH_REMATCH[1]}; fi
+```
+
+You can use negations like `[^/]`.  
+You cannot use shorthand character classes like `\d`.
+
+## Ternary operator
+```bash
+[[ $b = 5 ]] && (a="$c"; exit 5) || a="$d"
+```
+
+## Test exit value of command
+```bash
+if grep -q fooregex myfile; then
+```
+
+# printf
+## Colored output
+```bash
+echo -e "\033[31mHello World\033[0m"
+```
+
+or
+
+```bash
+printf "\e[1;31mHello World\e[0m\n"
+```
+
+|**Color**|**Value**|
+| --- | --- |
+|Black|`0;30`|
+|Dark Gray|`1;30`|
+|Blue|`0;34`|
+|Light Blue|`1;34`|
+|Green|`0;32`|
+|Light Green|`1;32`|
+|Cyan|`0;36`|
+|Light Cyan|`1;36`|
+|Red|`0;31`|
+|Light Red|`1;31`|
+|Purple|`0;35`|
+|Light Purple|`1;35`|
+|Brown|`0;33`|
+|Yellow|`1;33`|
+|Light Gray|`0;37`|
+|White|`1;37`|
+
+## Leading zeroes
+```bash
+printf "%06d\n" 3
+000003
+```
 
 # Read data
 ## STDIN
