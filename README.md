@@ -283,6 +283,30 @@ name=bob
 print ${age[$name]}
 ```
 
+# if
+## else & elif
+```
+if [[ conditional expression1 ]]; then
+        statement1
+        statement2
+        ...
+elif [[ conditional expression2 ]]; then
+        statement3
+        statement4
+        ...
+else
+        statement5
+fi
+```
+
+## Operators
+|**Operator**|**true if**|
+| --- | --- |
+|`-e file`|`file` exists, beware of [wildcards](https://stackoverflow.com/questions/6363441/check-if-a-file-exists-with-wildcard-in-shell-script)|
+
+
+
+
 # Read data
 ## STDIN
 ### ksh
