@@ -422,7 +422,7 @@ do
 done
 ```
 
-# break
+## break
 One can also prematurely leave a loop with `break`.
 
 ```bash
@@ -435,6 +435,25 @@ do
     fi
 done
 ```
+
+# find
+## delete files older than 30 days
+End directory with `/`, except when using `.`.
+
+```bash
+find <directory> -mtime +30 –type f –delete
+```
+
+## delete files younger than two minutes
+```bash
+find <directory> -type f -mmin -2 -delete
+```
+
+## search only in current directory
+```bash
+find . -maxdepth 1 -name "*.pl"
+```
+
 
 
 
