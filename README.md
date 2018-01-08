@@ -407,6 +407,35 @@ echo
 echo "Boom"
 ```
 
+# while
+## continue
+One can skip the rest of a loop and directly go to the next iteration with `continue`.
+
+```bash
+while read line
+do
+    if [[ $line = *.gz ]];then
+        continue
+    else
+        print $line
+    fi
+done
+```
+
+# break
+One can also prematurely leave a loop with `break`.
+
+```bash
+while read line
+do
+    if [[ $line = *!(.c) ]];then
+        break
+    else
+        print $line
+    fi
+done
+```
+
 
 
 
