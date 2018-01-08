@@ -384,6 +384,32 @@ printf "%06d\n" 3
 000003
 ```
 
+# for
+```bash
+for i in {1..5}
+do
+    echo "$i"
+done
+```
+
+```bash
+start=1
+end=5
+echo "Countdown"
+ 
+for (( c=$start; c<=$end; c++ ))
+do
+        echo -n "$c "
+        sleep 1
+done
+ 
+echo
+echo "Boom"
+```
+
+
+
+
 # Read data
 ## STDIN
 ### ksh
