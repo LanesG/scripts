@@ -454,7 +454,10 @@ find <directory> -type f -mmin -2 -delete
 find . -maxdepth 1 -name "*.pl"
 ```
 
-
+## exclude directory
+```bash
+find / -path /misc -prune -o -uid 995 -ls
+```
 
 
 
