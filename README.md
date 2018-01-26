@@ -498,3 +498,12 @@ done < data.txt
 |atime|Access|`-ult`|The time when the data of a file was last accessed. Displaying the contents of a file or executing a shell script will update a file's atime.|
 |mtime|Modify|`lt`|The time when the actual contents of a file was last modified.|
 |ctime|Change|`-clt`|The time when changes were made to the file or directory's inode (owner, permissions, etc.). The ctime is also updated when the contents of a file change. In UNIX, it is not possible to tell the actual creation time of a file.|
+
+
+
+
+
+# Show number of days in a month
+```bash
+cal $(date +"%m %Y") | awk 'NF {DAYS = $NF}; END {print DAYS}'
+```
