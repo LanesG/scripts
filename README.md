@@ -495,15 +495,14 @@ find / -path /misc -prune -o -uid 995 -ls
 # exec
 ## Write script output to file
 ```bash
-exec > /tmp/<Programmname>.out 2>&1
+exec > /tmp/script.out 2>&1
 set –x
 ```
 
 # case
 ```bash
 case $var in
-    a)            echo "a found!"
-                  ;;
+    a)            echo "a found!";;
     b | c)        echo "b or c found!"
                   echo "Zweite Zeile"
                   ;;
@@ -513,11 +512,74 @@ case $var in
 esac
 ```
 
+# awk
+## First column
+```bash
+awk '{print $1}' <file>
+```
+
+## Last column
+```bash
+awk '{print $NF}' <file>
+```
+
+## Second to last column
+```bash
+awk '{print $(NF-1)}' <file>
+```
+
+## Number of columns
+```bash
+awk '{print NF}' <file>
+```
+
+## First row
+```bash
+awk '{if (NR == 1) print}' <file>
+```
+
+## Print text in brackets
+```bash
+echo „The text in (brackets) | awk -F"[(]|[)]" '{print $2}'
+brackets
+```
+
+## Substrings
+### From n to end
+```bash
+awk '{ print substr($0,<n>,length($0)) }' <file>
+```
+
+### From beginning to nth row from end
+```bash
+awk '{ print substr($0,1,length($0)-<n>) }' <file>
+```
+
+### Several substrings in row
+```bash
+echo Hello | awk '{ printf("%srr%s", substr($0,1,2), substr($0,5,1)) }'
+Herro
+```
 
 
 
 
+# grep
+## grep -p
+### perl
+```bash
+perl -00ne "print if /<search string>/" <file>
+```
+| Option | Description |
+| --- | --- |
+|`-00`|causes the perl line-separator variable `$/` to be set to `\n\n`|
+|`-ne`|loop over input|
 
+### awk
+```bash
+awk '{ FS="\n" ; RS="" } /<Suchstring>/ { print $0 "\n" }' <file>
+```
+ACHTUNG: Befindet sich der gesuchte Abschnitt am Anfang einer Datei, wird die erste Zeile abgeschnitten! Auch wichtig bei Verkettung dieses Befehls! 
 
 
 # Read data
