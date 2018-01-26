@@ -416,12 +416,38 @@ echo "Boom"
 ```
 
 # while
+## Variables
+[A variable modified inside a while loop is not remembered](https://stackoverflow.com/questions/16854280/a-variable-modified-inside-a-while-loop-is-not-remembered)
+
+see [Here Strings](#here-strings)
+
+```bash
+declare -a localgroups
+while read line; do
+    name=$(cut -d: -f1 <<< $line)
+    localgroups=("${localgroups[@]}" $name)
+done <<< "$(grep -e ^sentryadmins -e ^bigdata_ -e ^datalab_ /etc/group)"
+
+for group in "${localgroups[@]}"; do
+    echo $group
+done
+```
+
+## true
+```bash
+while true; do
+```
+
+## Conditionals
+```bash
+while [[ $RC -ne 0 ]]; do
+```
+
 ## continue
 One can skip the rest of a loop and directly go to the next iteration with `continue`.
 
 ```bash
-while read line
-do
+while read line; do
     if [[ $line = *.gz ]];then
         continue
     else
@@ -434,8 +460,7 @@ done
 One can also prematurely leave a loop with `break`.
 
 ```bash
-while read line
-do
+while read line; do
     if [[ $line = *!(.c) ]];then
         break
     else
@@ -466,6 +491,32 @@ find . -maxdepth 1 -name "*.pl"
 ```bash
 find / -path /misc -prune -o -uid 995 -ls
 ```
+
+# exec
+## Write script output to file
+```bash
+exec > /tmp/<Programmname>.out 2>&1
+set –x
+```
+
+# case
+```bash
+case $var in
+    a)            echo "a found!"
+                  ;;
+    b | c)        echo "b or c found!"
+                  echo "Zweite Zeile"
+                  ;;
+    day | night)  echo "time found!";;
+    W[ai]nd)      echo "Found Wand or Wind.";;
+    *)            echo "Other Arguments found: $VAR";;
+esac
+```
+
+
+
+
+
 
 
 
