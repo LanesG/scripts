@@ -393,6 +393,14 @@ done
 ```
 
 ```bash
+length=5
+for i in $(seq 0 $length)
+do
+    echo "$i"
+done
+```
+
+```bash
 start=1
 end=5
 echo "Countdown"
