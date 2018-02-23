@@ -732,6 +732,52 @@ mutt -s <subject> foo@acme -a <file> < /dev/null
 ```
 
 
+# date
+```bash
+date +"%d/%m/%Y"
+06/05/2013
+```
+
+| Option | Description |
+| --- | --- |
+|`%y`|last two digits of year (00..99)|
+|`%Y`|year|
+|`%m`|month (01..12)|
+|`%d`|day of month (e.g, 01)|
+|`%-d`|day of month (e.g, 1)|
+|`%H`|hour (00..23)|
+|`%M`|minute (00..59)|
+|`%S`|second (00..60)|
+|`%s`|seconds since 1970-01-01 00:00:00 UTC|
+
+## Convert seconds since the epoch (1970-01-01 UTC) to a date
+```bash
+date -d@696969
+Fri Jan  9 02:36:09 CET 1970
+```
+
+## Show number of days in a month
+```bash
+cal $(date +"%m %Y") | awk 'NF {DAYS = $NF}; END {print DAYS}'
+```
+
+## Other cool stuff
+```bash
+date --date="10 minutes ago"
+Fri Feb 23 15:13:37 CET 2018
+```
+
+```bash
+date --date="10 days ago" +%Y%m%d
+20180213
+```
+
+Show date of last Monday or the 1st if last Monday was last month
+```bash
+[[ (`date +%d` -lt 5) && (`date +%a` = "Fri") ]] && echo $("01/`date +%m/%Y`") || echo $(date -d "last monday" +%d/%m/%Y)
+```
+
+
 
 
 
@@ -772,12 +818,3 @@ done < data.txt
 |atime|Access|`-ult`|The time when the data of a file was last accessed. Displaying the contents of a file or executing a shell script will update a file's atime.|
 |mtime|Modify|`lt`|The time when the actual contents of a file was last modified.|
 |ctime|Change|`-clt`|The time when changes were made to the file or directory's inode (owner, permissions, etc.). The ctime is also updated when the contents of a file change. In UNIX, it is not possible to tell the actual creation time of a file.|
-
-
-
-
-
-# Show number of days in a month
-```bash
-cal $(date +"%m %Y") | awk 'NF {DAYS = $NF}; END {print DAYS}'
-```
