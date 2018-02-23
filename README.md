@@ -561,6 +561,27 @@ echo Hello | awk '{ printf("%srr%s", substr($0,1,2), substr($0,5,1)) }'
 Herro
 ```
 
+# sed
+## Replace in file
+```bash
+sed -i 's/replace_this/with_this/g' <file>
+```
+
+## Delete first row
+```bash
+sed '1d'
+```
+
+## Delete last row
+```bash
+sed '$d'
+```
+
+## Print file from third line
+```bash
+sed '$d' <file>
+```
+
 
 
 
