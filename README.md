@@ -778,7 +778,46 @@ Show date of last Monday or the 1st if last Monday was last month
 ```
 
 
+# uniq
+Discard all but one of **successive** identical lines.
 
+| Option | Description |
+| --- | --- |
+|`-c`|Precedes each output line with a count of the number of times each line appeared in the input file.|
+|`-d`|Displays only the repeated lines.|
+
+Sort by event count:
+```bash
+uniq -c -d <Datei> | sort -k 1nr
+```
+
+
+# seq
+Print a sequence of numbers.
+
+```bash
+seq 8 11
+8
+9
+10
+11
+```
+
+```bash
+seq -w 8 11
+08
+09
+10
+11
+```
+
+
+# paste
+Merge lines of files.
+
+```bash
+paste -d "\t" file1 file2 | while read field1 filed2; do
+```
 
 
 # Read data
