@@ -644,11 +644,36 @@ after2
 * `pcregrep` - a `grep` with Perl-compatible regular expressions with option `-M`, `--multiline`
 
 ## Find exact string
-`grep -x`
+```bash
+grep -x
+```
 
+## Find several strings
+```bash
+grep –e foo –e bar
+```
+
+## Exclude several strings
+```bash
+grep -Ev 'foo|bar'
+```
+
+## Exclude grep process
+```bash
+ps -ef | grep [M]yProcess
+```
+
+## Search in tar.gz files
+```bash
+zgrep -a string myArchive.tar.gz
+```
+
+## Show surrounding lines
+```bash
+grep -C 2 foo
+```
 
 ## grep -p
-### perl
 ```bash
 perl -00ne "print if /<search string>/" <file>
 ```
@@ -657,11 +682,26 @@ perl -00ne "print if /<search string>/" <file>
 |`-00`|causes the perl line-separator variable `$/` to be set to `\n\n`|
 |`-ne`|loop over input|
 
-### awk
+
+# tr
+## Translate lower to upper case
 ```bash
-awk '{ FS="\n" ; RS="" } /<Suchstring>/ { print $0 "\n" }' <file>
+tr '[:lower:]' '[:upper:]'
 ```
-ACHTUNG: Befindet sich der gesuchte Abschnitt am Anfang einer Datei, wird die erste Zeile abgeschnitten! Auch wichtig bei Verkettung dieses Befehls! 
+
+or
+
+```bash
+${username,,}
+```
+
+
+
+
+
+
+
+
 
 
 # Read data
