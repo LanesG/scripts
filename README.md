@@ -577,15 +577,76 @@ sed '1d'
 sed '$d'
 ```
 
-## Print file from third line
+## Delete empty lines
+```bash
+sed '/^$/d'
+```
+
+## Delete trailing spaces
+```bash
+sed 's/ *$//g'
+```
+
+## Replace newline with comma
+```bash
+sed ':a;N;$!ba;s/\n/,/g' <Datei>
+```
+
+## Output parts of a file
+### From third line
 ```bash
 sed '$d' <file>
 ```
 
+or
 
+```bash
+tail -n+3 <file>
+```
 
+Example file:
+```
+distri1
+distri2
+!before1
+before2
+!!after1
+after2
+```
+### From beginning to first exclamation mark
+```bash
+sed -n '1,/^!/p' | grep –v ^!
+distri1
+distri2
+```
+
+### From single exclamation mark to the two exclamation marks
+```bash
+sed -n '/^![^!]/,/!!/p' | grep –v ^!!
+!before1
+before2
+```
+
+Without the two exclamation marks the file will be printed until the end.
+
+### From two exclamation marks until the end
+```bash
+sed –n '/^!!/,$p'
+!!after1
+after2
+```
 
 # grep
+## Incomplete list
+* `egrep` is the same as `grep -E`, `--extended-regexp`
+* `fgrep` is the same as `grep -F`, `--fixed-strings`
+* `zgrep` - search possibly compressed files for a regular expression
+* `pcregrep` - a `grep` with Perl-compatible regular expressions with option `-M`, `--multiline`
+
+## Find exact string
+`grep -x`
+
+
 ## grep -p
 ### perl
 ```bash
