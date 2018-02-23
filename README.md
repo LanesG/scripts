@@ -696,9 +696,40 @@ ${username,,}
 ```
 
 
+# tar
+| Option | Description |
+| --- | --- |
+|`-c`|create new archive|
+|`-u`|add files to archive|
+|`-t`|list files|
+|`-x`|extract files from archive|
+|`-v`|list name of each file as it is processed|
+|`-f`|archive uses archive variable|
+
+## Create compressed archive
+```bash
+tar –cvfz <archiv name> <directory>.gz
+```
+
+# rm
+Delete a directory beginning with a dash.
+```bash
+rm –r -- -MyDirectory
+```
 
 
+# mailx
+`sendmail` has to run on the system.
 
+## Send mail
+```bash
+echo "<text>" | mailx –s "<subject>" foo@acme
+```
+
+## Send file per mail
+```bash
+mutt -s <subject> foo@acme -a <file> < /dev/null
+```
 
 
 
