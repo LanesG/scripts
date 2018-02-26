@@ -708,8 +708,9 @@ ${username,,}
 
 ## Create compressed archive
 ```bash
-tar –cvfz <archiv name> <directory>.gz
+tar –cvfz <archiv name>.gz <directory>
 ```
+
 
 # rm
 Delete a directory beginning with a dash.
