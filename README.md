@@ -195,6 +195,12 @@ echo 10-3 | bc
 7
 ```
 
+# Brace expansion
+## Rename foo.bar to foo.txt
+```
+mv foo.{bar,txt}
+```
+
 # Random numbers
 ```
 echo $((RANDOM%10+1))
