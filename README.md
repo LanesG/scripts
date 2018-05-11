@@ -864,3 +864,32 @@ done < data.txt
 |atime|Access|`-ult`|The time when the data of a file was last accessed. Displaying the contents of a file or executing a shell script will update a file's atime.|
 |mtime|Modify|`lt`|The time when the actual contents of a file was last modified.|
 |ctime|Change|`-clt`|The time when changes were made to the file or directory's inode (owner, permissions, etc.). The ctime is also updated when the contents of a file change. In UNIX, it is not possible to tell the actual creation time of a file.|
+
+
+# Sticky bit
+
+Verwendung findet das Bit bei Verzeichnissen, wo es zur Folge hat, dass Benutzer Dateien anderer Benutzer nicht löschen können. Früher wurde es bei Dateien benutzt, wo das Sticky Bit bewirkte, dass nach dem Ausführen der Datei der Programmcode weiterhin im Arbeitsspeicher verblieb (bei Swapping-Systemen ohne Paging).
+
+Das Stiky Bit wird im Execute-Recht für die Gruppe other dargestellt. Ein kleines `t` bedeutet, dass auch das Ausführungsrecht für `other` gesetzt ist. Bei einem großen `T` ist das Ausführungsrecht nicht gesetzt.
+
+
+# Volumes & Filesystems
+## Check free space
+```
+lspv hdisk0 -> pvs
+lsvg -l t2vg - Mountpoint <-> LV
+```
+
+## Enlarge filesystem
+```
+lvextend -L 3G /dev/mapper/rootvg-optlv
+resize2fs -p /dev/mapper/rootvg-optlv  (ext2 und ext3)
+resize4fs ...                          (ext4) (ab Version 6 existiert nur noch der Befehl resize2fs)
+xfs_growfs /opt                        (xfs) (füllt auf LV-Größe auf)
+```
+
+## Reduce filesystem
+```
+resize2fs -p /dev/mapper/rootvg-optlv 3G
+lvreduce -L 3G /dev/mapper/rootvg-optlv
+```
