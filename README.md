@@ -705,9 +705,12 @@ ${username,,}
 # tar
 | Option | Description |
 | --- | --- |
+|`-A`|append tar files to an archive|
 |`-c`|create new archive|
-|`-u`|add files to archive|
+|`-d`|find differences between archive and file system|
+|`-r`|append files to the end of an archive|
 |`-t`|list files|
+|`-u`|only append files that are newer than the existing in archive|
 |`-x`|extract files from archive|
 |`-v`|list name of each file as it is processed|
 |`-f`|archive uses archive variable|
