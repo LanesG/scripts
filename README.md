@@ -720,6 +720,16 @@ ${username,,}
 tar –cvfz <archiv name>.gz <directory>
 ```
 
+## Fill archive in wile loop
+First you have to create an empty archive.
+```bash
+tar -cf my.tar -T /dev/null
+find . -name *.txt | while read line
+do
+    tar -rvfz $line my.tar
+done
+```
+
 
 # rm
 Delete a directory beginning with a dash.
