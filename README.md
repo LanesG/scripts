@@ -726,7 +726,7 @@ First you have to create an empty archive.
 tar -cf my.tar -T /dev/null
 find . -name *.txt | while read line
 do
-    tar -rvfz $line my.tar
+    tar -rvf my.tar $line
 done
 ```
 
