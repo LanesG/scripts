@@ -698,6 +698,11 @@ tr '[:lower:]' '[:upper:]'
 or
 
 ```bash
+${username^^}
+```
+
+Lower case:
+```bash
 ${username,,}
 ```
 
