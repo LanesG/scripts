@@ -120,6 +120,31 @@ while true; do
     case "$1" in ...
 ```
 
+
+# Functions
+```bash
+function_name () {
+   command...
+}
+```
+
+To call a function with arguments:
+```bash
+function_name "$arg1" "$arg2"
+```
+
+The function refers to passed arguments by their position (not by name), that is `$1`, `$2`, and so forth. `$0` is the name of the script itself.
+
+Example:
+```bash
+function_name () {
+   echo "Parameter #1 is $1"
+}
+```
+
+Also, you need to call your function *after* it is declared. 
+
+
 # Suppress output
 [Illustrated Redirection Tutorial](http://wiki.bash-hackers.org/howto/redirection_tutorial)
 ## STDOUT and STDERR
