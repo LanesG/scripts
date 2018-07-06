@@ -1,3 +1,12 @@
+# vim
+My favourite `.vimrc`:
+```
+colorscheme murphy
+
+" Map Ctrl+l to clear highlighted searches
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+```
+
 # Variables
 ## Pattern-matching Operators
 |**Operator**|**Meaning**|
