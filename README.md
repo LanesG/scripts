@@ -635,7 +635,7 @@ sed ':a;N;$!ba;s/\n/,/g' <Datei>
 ## Output parts of a file
 ### From third line
 ```bash
-sed '$d' <file>
+sed '1,2d' <file>
 ```
 
 or
