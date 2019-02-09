@@ -607,6 +607,11 @@ Herro
 sed -i 's/replace_this/with_this/g' <file>
 ```
 
+## Delete line with specific string in file
+```bash
+sed -i '/my_string/d' <file>
+```
+
 ## Delete first row
 ```bash
 sed '1d'
