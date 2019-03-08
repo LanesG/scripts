@@ -166,6 +166,11 @@ ping 127.0.0.1 > /dev/null 2>&1
 ping 127.0.0.1 2> /dev/null
 ```
 
+## Redirect STDOUT and STDERR to file
+```
+ping 127.0.0.1 &> file.txt
+```
+
 # Calculations
 ## Variables and numbers
 ```
