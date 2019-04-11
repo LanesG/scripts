@@ -766,7 +766,7 @@ ${username,,}
 
 ## Create compressed archive
 ```bash
-tar –cvfz <archiv name>.gz <directory>
+tar -cvzf <archiv name>.gz <directory>
 ```
 
 ## Fill archive in wile loop
