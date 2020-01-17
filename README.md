@@ -606,6 +606,11 @@ echo Hello | awk '{ printf("%srr%s", substr($0,1,2), substr($0,5,1)) }'
 Herro
 ```
 
+## Search
+```bash
+awk '/<search string>/ { print $2 }' <file>
+```
+
 # sed
 ## Replace in file
 ```bash
