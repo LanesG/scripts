@@ -771,13 +771,13 @@ ${username,,}
 
 ## Create compressed archive
 ```bash
-tar -cvzf <archiv name>.gz <directory>
+tar cvzf <archiv name>.gz <directory>
 ```
 
 ## Fill archive in wile loop
 First you have to create an empty archive.
 ```bash
-tar -cf my.tar -T /dev/null
+tar cf my.tar -T /dev/null
 find . -name *.txt | while read line
 do
     tar -rvf my.tar $line
