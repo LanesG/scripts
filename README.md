@@ -478,7 +478,7 @@ for group in "${localgroups[@]}"; do
 done
 ```
 
-Note: You have to put the `grep` command in quotes in order to get all results and not only the first one.
+Note: You have to put the `grep` command in double quotes in order to get all results and not only the first one.
 
 ## true
 ```bash
