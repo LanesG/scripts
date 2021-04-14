@@ -471,12 +471,14 @@ declare -a localgroups
 while read line; do
     name=$(cut -d: -f1 <<< $line)
     localgroups=("${localgroups[@]}" $name)
-done <<< "$(grep -e ^sentryadmins -e ^bigdata_ -e ^datalab_ /etc/group)"
+done <<< "$(grep -e ^foo -e ^bar /etc/group)"
 
 for group in "${localgroups[@]}"; do
     echo $group
 done
 ```
+
+Note: You have to put the `grep` command in quotes in order to get all results and not only the last one.
 
 ## true
 ```bash
