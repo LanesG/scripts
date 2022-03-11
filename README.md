@@ -763,6 +763,7 @@ ${username,,}
 | --- | --- |
 |`-A`|append tar files to an archive|
 |`-c`|create new archive|
+|`-C`|extract to directory|
 |`-d`|find differences between archive and file system|
 |`-r`|append files to the end of an archive|
 |`-t`|list files|
