@@ -670,6 +670,14 @@ before2
 !!after1
 after2
 ```
+### Lines two to four
+```bash
+sed -n '2,4p' <file>
+distri2
+!before1
+before2
+```
+
 ### From beginning to first exclamation mark
 ```bash
 sed -n '1,/^!/p' | grep –v ^!
