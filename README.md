@@ -976,3 +976,9 @@ xfs_growfs /opt                        (xfs) (füllt auf LV-Größe auf)
 resize2fs -p /dev/mapper/rootvg-optlv 3G
 lvreduce -L 3G /dev/mapper/rootvg-optlv
 ```
+
+# Certificates
+## Show certificate in connection
+```
+openssl s_client -connect <hostname>:<port> -showcerts
+```
