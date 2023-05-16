@@ -909,6 +909,10 @@ paste -d "\t" file1 file2 | while read field1 filed2; do
 The  uuidgen  program creates (and prints) a new universally unique identifier (UUID) using the libuuid(3) library.  The new UUID can reasonably be considered unique among all UUIDs created on the local system, and among UUIDs created on other systems in the past and in the future.
 
 
+# comm
+Compare two sorted files line by line.
+
+
 
 # Read data
 ## STDIN
