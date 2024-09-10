@@ -587,7 +587,7 @@ awk '{if (NR == 1) print}' <file>
 
 ## Print text in brackets
 ```bash
-echo „The text in (brackets) | awk -F"[(]|[)]" '{print $2}'
+echo "The text in (brackets)" | awk -F"[(]|[)]" '{print $2}'
 brackets
 ```
 
