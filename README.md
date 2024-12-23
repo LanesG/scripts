@@ -696,7 +696,7 @@ Without the two exclamation marks the file will be printed until the end.
 
 ### From two exclamation marks until the end
 ```bash
-sed –n '/^!!/,$p'
+sed -n '/^!!/,$p'
 !!after1
 after2
 ```
