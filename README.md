@@ -1,5 +1,4 @@
 # Table of Contents
-- [Table of Contents](#table-of-contents)
 - [vim](#vim)
 - [Variables](#variables)
 - [Here Documents](#here-documents)
